@@ -1,6 +1,16 @@
-# electron-quick-start
+# my-electron-app
 
-**Clone and run for a quick way to see Electron in action.**
+**Clone and run for a quick way to see this bug https://github.com/electron-userland/electron-packager/issues/733 in action.**
+
+The sole purpose of this app is to demonstrate an Electron Packager Issue (#733). It is based on the "electron-quick-start" app. The documentation below is info from that project. See the `package.json` file for the additional packages that have been added to the basic app to expose the functionality needed to reproduce this issue. Appropriate code changes have been made in the following files to expose this bug:
+
+- `gulp.config.js`
+- `gulpfile.js`
+- `main.js`
+
+Additional support files added to work with these code changes are :
+- `xml/books.xml`
+- `xml/books.xsd`
 
 This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) within the Electron documentation.
 
@@ -25,8 +35,24 @@ git clone https://github.com/electron/electron-quick-start
 cd electron-quick-start
 # Install dependencies
 npm install
+# Recompile native modules with Electron bindings
+gulp erebuild
 # Run the app
 npm start
+
+# Build the native platform app
+gulp build:electron
+# THE ABOVE STEP FAILS
+```
+
+The last step listed above `gulp build:electron` fails in Node 8.9.4 due to a bug in `electron-packager` or its dependencies. This sequence works in Node 7.10.1.
+
+Once the above is fixed, you should be able to run the following to execute the built application. (in a windows environment)
+
+```
+# Run the built app
+cd edist/my-electron-app-win32-x64/
+my-electron-app.exe
 ```
 
 Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.

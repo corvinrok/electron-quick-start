@@ -1,7 +1,11 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
+  "name": "my-electron-app",
+  "version": "1.1.1",
   "description": "A minimal Electron application",
+  "copyright": "Copyright (C) Corvin Rok",
+  "authors": [
+    "My Electron Application Team"
+  ],
   "main": "main.js",
   "scripts": {
     "start": "electron ."
@@ -12,11 +16,24 @@
     "quick",
     "start",
     "tutorial",
-    "demo"
+    "demo",
+    "issue",
+    "native",
+    "packager"
   ],
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.7.8"
+    "del": "3.0.0",
+    "electron": "1.8.2-beta.3",
+    "electron-packager": "10.1.1",
+    "electron-rebuild": "1.6.0",
+    "gulp": "3.9.1",
+    "gulp-load-plugins": "1.5.0",
+    "gulp-util": "3.0.8"
+  },
+  "dependencies": {
+    "libxml-xsd": "0.5.2",
+    "xml2js": "0.4.19"
   }
 }
