@@ -1,8 +1,8 @@
 # my-electron-app
 
-**Clone and run for a quick way to see this bug https://github.com/electron-userland/electron-packager/issues/733 in action.**
+**Clone and run for a quick way to see this bug https://github.com/electron/asar/issues/139 in action.**
 
-The sole purpose of this app is to demonstrate an Electron Packager Issue (#733). It is based on the "electron-quick-start" app. The documentation below is info from that project. See the `package.json` file for the additional packages that have been added to the basic app to expose the functionality needed to reproduce this issue. Appropriate code changes have been made in the following files to expose this bug:
+The sole purpose of this app is to demonstrate an ASAR Issue (#139)/Electron Packager Issue (#733). It is based on the "electron-quick-start" app. The documentation below is info from that project. See the `package.json` file for the additional packages that have been added to the basic app to expose the functionality needed to reproduce this issue. Appropriate code changes have been made in the following files to expose this bug:
 
 - `gulp.config.js`
 - `gulpfile.js`
