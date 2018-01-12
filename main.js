@@ -1,15 +1,18 @@
+const appName = 'My Test Application';
 const electron = require('electron');
-// Module to control application life.
-const app = electron.app;
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
-
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
 
 const xml2js = require('xml2js');
 const xsd = require('libxml-xsd');
+
+// Module to control application life.
+const app = electron.app;
+// Module to create native browser window.
+const BrowserWindow = electron.BrowserWindow;
+const Tray = electron.Tray;
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -72,16 +75,21 @@ function createWindow () {
       console.log('Failed to read the XML data: ' + err);
   });
 
+  var iconPath = path.resolve(__dirname, './favicon.ico');
+  const appIcon = new Tray(iconPath);
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600});
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, './ClientSide/app/index.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
+      pathname: path.join(__dirname, './index.html'),
+      protocol: 'file:',
+      icon: iconPath,
+      resizable: true,
+      slashes: true
+    }));
 
+  appIcon.setToolTip(appName);
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
@@ -91,6 +99,7 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+    app.quit();
   })
 }
 

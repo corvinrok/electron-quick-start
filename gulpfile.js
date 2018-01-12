@@ -1,5 +1,7 @@
 
 'use strict';
+
+const path = require('path');
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')({lazy: true});
 var packager = require('electron-packager');
@@ -69,14 +71,16 @@ gulp.task('erebuild', function () {
         });
 });
 
+const localTemp = path.join(__dirname, '../temp', config.electronbuild);
 var opts = {
     name: pkg.name,
     platform: 'win32',
     arch: 'ia32',                           // ia32, x64 or all
     dir: config.root,                       // source location of app
     out: config.electronbuild,              // destination location for app os/native binaries
+    // tmpdir: localTemp,
     ignore: config.electronignore,          // don't include these directories in the electron app build
-    //icon: config.icon,
+    icon: config.icon,
     asar: {unpackDir: config.electroncompiled},  // compress project/modules into an asar blob
     overwrite: true,
     prune: true,
@@ -96,7 +100,7 @@ gulp.task('clean:electron', function (cb) {
 });
 
 gulp.task('build:electron', ['clean:electron'], function (cb) {
-
+    // console.log(localTemp);
     $.util.log('Launching task to build & package binaries for',
         $.util.colors.cyan(opts.name),
         $.util.colors.magenta('v' + opts.appVersion)
