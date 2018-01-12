@@ -1,1 +1,4 @@
 node_modules
+.idea/
+/edist/
+/package-lock.json
